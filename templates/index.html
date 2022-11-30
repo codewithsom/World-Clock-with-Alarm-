@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World Clock ⏰</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Welcome to World Clock</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+         
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-3">
+    <h1 class="text-center">Welcome to World Clock </h1>
+    <main class="my-3">
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm  border-primary">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">India <i class="bi bi-clock"></i></h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title" id="india"></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>10 users included</li>
+                <li>2 GB of storage</li>
+                <li>Email support</li>
+                <li>Help center access</li>
+              </ul>
+               <button type="button" class="w-100 btn btn-lg btn-outline-danger">More About This Zone</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">United States <i class="bi bi-clock"></i></h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title" id="usa"></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>20 users included</li>
+                <li>10 GB of storage</li>
+                <li>Priority email support</li>
+                <li>Help center access</li>
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-outline-warning">More About This Zone</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3 ">
+              <h4 class="my-0 fw-normal">China <i class="bi bi-clock"></i></h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title" id="china"></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>30 users included</li>
+                <li>15 GB of storage</li>
+                <li>Phone and email support</li>
+                <li>Help center access</li>
+              </ul>
+              <button type="button" class="w-100 btn btn-lg  btn-outline-primary">More about This Zone</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </main>
+    <div class="container">
+
+  <h2>Set an Alarm </h2>
+    <label for="appt">Select a time for your Alarm:</label>
+    <input type="time" id="alarm" name="alarm">
+  </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+  </script>
+  <script>
+    const updateTime = ()=>{ 
+    let d = new Date()
+    usa.innerHTML = d.toLocaleString('en-US', {
+    timeZone: 'America/Los_Angeles',
+  }).split(", ")[1]
+    india.innerHTML = d.toLocaleString('en-US', {
+    timeZone: 'Asia/Kolkata',
+  }).split(", ")[1]
+    china.innerHTML = d.toLocaleString('en-US', {
+    timeZone: 'Asia/Shanghai',
+  }).split(", ")[1]
+
+  let alarmhour = alarm.value.split(":")[0]
+  let alarmmin = alarm.value.split(":")[1]
+  // console.log(d.getHours(), alarmhour)
+  // console.log(d.getMinutes(), alarmmin)
+  if(d.getHours()==alarmhour && d.getMinutes() == alarmmin){
+    console.log("Alarm is ringing")
+    let audiourl = "https://file-examples.com/storage/fe00efbd3c63761a498eda8/2017/11/file_example_MP3_700KB.mp3"
+    var audio = new Audio(audiourl);
+    audio.play();
+  }
+  }
+  setInterval(updateTime, 1000);
+
+
+  </script>
+</body>
+
+<footer class="text-center pb-2 bg-black text-bg-success">&copy; Copyright 2022 | Designed By: Somya Rawat</footer>
+
+
+</html>
